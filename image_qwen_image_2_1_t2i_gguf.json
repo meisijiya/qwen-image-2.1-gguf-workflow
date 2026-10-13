@@ -1,8 +1,8 @@
 {
   "id": "54bb395d-3e60-4c94-b525-85523901575b",
   "revision": 0,
-  "last_node_id": 483,
-  "last_link_id": 713,
+  "last_node_id": 486,
+  "last_link_id": 723,
   "nodes": [
     {
       "id": 13,
@@ -183,7 +183,7 @@
         4096,
         "",
         1,
-        25,
+        8,
         1024,
         1024,
         "euler",
@@ -203,7 +203,7 @@
         "max_length": 4096,
         "negative_prompt": "",
         "cfg": 1,
-        "steps": 25,
+        "steps": 8,
         "width": 1024,
         "height": 1024,
         "scheduler": "euler",
@@ -278,10 +278,10 @@
       "title": "Note: Model links",
       "properties": {},
       "widgets_values": [
-        "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen-image-2.1-UC-Q4_K_M.gguf](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized/resolve/main/qwen-image-2.1-UC-Q4_K_M.gguf) (4.60 GB)\n\nLoaded by `Unet Loader (GGUF)` from ComfyUI-GGUF (leejet fork). See the repo's\n[Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\nfor the safetensors/FP8 builds if you prefer no custom node.\n\n**text_encoders**\n\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (8.71 GB)\n- [qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors) (8.82 GB)\n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) (644.2 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── qwen-image-2.1-UC-Q4_K_M.gguf\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_int8_convrot.safetensors\n│   │   └── qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+        "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen-image-2.1-UC-Q4_K_M.gguf](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized/resolve/main/qwen-image-2.1-UC-Q4_K_M.gguf) (4.60 GB)\n\nLoaded by `Unet Loader (GGUF)` from ComfyUI-GGUF (leejet fork). Other tiers from the\nsame repo: `Q4_0` (fastest), `Q5_K_M`, `Q6_K`, `Q8_0`, `BF16` (needs >16 GB VRAM).\nSee the repo's [Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\nfor the safetensors/INT8 builds if you prefer no custom node.\n\n**loras**\n\n- [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)\n\nDistilled for 8 steps. Loaded by the `Turbo (8 steps)` node between the KV cache\nand the sampler. With it, keep steps at 8 — raising steps past that wastes time.\n\n**text_encoders**\n\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (8.71 GB)\n- [qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors) (8.82 GB)\n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) (644.2 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── qwen-image-2.1-UC-Q4_K_M.gguf\n│   ├── 📂 loras/\n│   │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_int8_convrot.safetensors\n│   │   └── qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
       ],
       "widgets_values_named": {
-        "text": "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (6.76 GB)\n\n**text_encoders**\n\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (8.71 GB)\n- [qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors) (8.82 GB)\n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) (644.2 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── qwen_image_2.1_int8_convrot.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_int8_convrot.safetensors\n│   │   └── qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+        "text": "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen-image-2.1-UC-Q4_K_M.gguf](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized/resolve/main/qwen-image-2.1-UC-Q4_K_M.gguf) (4.60 GB)\n\nLoaded by `Unet Loader (GGUF)` from ComfyUI-GGUF (leejet fork). Other tiers from the\nsame repo: `Q4_0` (fastest), `Q5_K_M`, `Q6_K`, `Q8_0`, `BF16` (needs >16 GB VRAM).\nSee the repo's [Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\nfor the safetensors/INT8 builds if you prefer no custom node.\n\n**loras**\n\n- [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)\n\nDistilled for 8 steps. Loaded by the `Turbo (8 steps)` node between the KV cache\nand the sampler. With it, keep steps at 8 — raising steps past that wastes time.\n\n**text_encoders**\n\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (8.71 GB)\n- [qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors) (8.82 GB)\n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) (644.2 MB)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── qwen-image-2.1-UC-Q4_K_M.gguf\n│   ├── 📂 loras/\n│   │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_int8_convrot.safetensors\n│   │   └── qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -305,10 +305,10 @@
       "title": "Note: Usage",
       "properties": {},
       "widgets_values": [
-        "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\nOutput size comes from ResolutionSelector (width/height). Default is 1 megapixel (1024*1024). For native 2K, set 1:1 and 4 megapixels (2048*2048). Prefer multiples of 32.\n\n## Transparent Image\n\nTo generate a transparent image, wrap the prompt like this and replace the middle with the subject:\n\n---\nThis is an RGBA format image with transparency. `[your description]`. The image has an alpha channel and a transparent background.\n\n---\nSave as PNG to keep the alpha channel.\n\n## Parameters\n\n- prompt: what to generate. For RGBA, see Note: transparent.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: Qwen Image 2.1 official  pipeline uses about 40-50 with euler. This template starts at 25. More advanced samplers need fewer steps.\n"
+        "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\nOutput size comes from ResolutionSelector (width/height). Default is 1 megapixel (1024*1024). For native 2K, set 1:1 and 4 megapixels (2048*2048). Prefer multiples of 32.\n\n## Transparent Image\n\nTo generate a transparent image, wrap the prompt like this and replace the middle with the subject:\n\n---\nThis is an RGBA format image with transparency. `[your description]`. The image has an alpha channel and a transparent background.\n\n---\nSave as PNG to keep the alpha channel.\n\n## Parameters\n\n- prompt: what to generate. For RGBA, see Note: transparent.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: the `Turbo (8 steps)` LoRA is loaded and 8 is its design value, but raising steps still buys detail - it is not capped. Measured at 1024x1024 on an RTX 4060 Laptop 8 GB: 6 steps ~24s (visible face distortion), 8 ~27s (usable), 12 ~29s (clean), 16 ~36s, 25 ~49s. Gains flatten past 12. Use 8-12 day to day, 16 for detail. To fall back to the base model's full schedule, bypass the Turbo node and raise steps to 40-50 with euler (~106s at 25 un-accelerated).\n- EasyCache: reuses earlier steps when they barely move the latent. It is the largest single speedup (~50%). `reuse_threshold` 0.2 is the safe setting; 0.35 still looks clean, higher starts to show detail drift.\n"
       ],
       "widgets_values_named": {
-        "text": "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\nOutput size comes from ResolutionSelector (width/height). Default is 1 megapixel (1024*1024). For native 2K, set 1:1 and 4 megapixels (2048*2048). Prefer multiples of 32.\n\n## Transparent Image\n\nTo generate a transparent image, wrap the prompt like this and replace the middle with the subject:\n\n---\nThis is an RGBA format image with transparency. `[your description]`. The image has an alpha channel and a transparent background.\n\n---\nSave as PNG to keep the alpha channel.\n\n## Parameters\n\n- prompt: what to generate. For RGBA, see Note: transparent.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: Qwen Image 2.1 official  pipeline uses about 40-50 with euler. This template starts at 25. More advanced samplers need fewer steps.\n"
+        "text": "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\nOutput size comes from ResolutionSelector (width/height). Default is 1 megapixel (1024*1024). For native 2K, set 1:1 and 4 megapixels (2048*2048). Prefer multiples of 32.\n\n## Transparent Image\n\nTo generate a transparent image, wrap the prompt like this and replace the middle with the subject:\n\n---\nThis is an RGBA format image with transparency. `[your description]`. The image has an alpha channel and a transparent background.\n\n---\nSave as PNG to keep the alpha channel.\n\n## Parameters\n\n- prompt: what to generate. For RGBA, see Note: transparent.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: the `Turbo (8 steps)` LoRA is loaded and 8 is its design value, but raising steps still buys detail - it is not capped. Measured at 1024x1024 on an RTX 4060 Laptop 8 GB: 6 steps ~24s (visible face distortion), 8 ~27s (usable), 12 ~29s (clean), 16 ~36s, 25 ~49s. Gains flatten past 12. Use 8-12 day to day, 16 for detail. To fall back to the base model's full schedule, bypass the Turbo node and raise steps to 40-50 with euler (~106s at 25 un-accelerated).\n- EasyCache: reuses earlier steps when they barely move the latent. It is the largest single speedup (~50%). `reuse_threshold` 0.2 is the safe setting; 0.35 still looks clean, higher starts to show detail drift.\n"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -375,8 +375,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 38,
-          "lastNodeId": 483,
-          "lastLinkId": 713,
+          "lastNodeId": 486,
+          "lastLinkId": 723,
           "lastRerouteId": 9
         },
         "revision": 0,
@@ -1010,7 +1010,7 @@
                 "localized_name": "model",
                 "name": "model",
                 "type": "MODEL",
-                "link": 700
+                "link": 722
               },
               {
                 "localized_name": "positive",
@@ -1092,7 +1092,7 @@
             "widgets_values": [
               0,
               "fixed",
-              25,
+              8,
               1,
               "euler",
               "simple",
@@ -1101,7 +1101,7 @@
             "widgets_values_named": {
               "seed": 0,
               "control_after_generate": "fixed",
-              "steps": 25,
+              "steps": 8,
               "cfg": 1,
               "sampler_name": "euler",
               "scheduler": "simple",
@@ -1481,7 +1481,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  700
+                  720
                 ]
               }
             ],
@@ -1495,6 +1495,141 @@
             "widgets_values_named": {
               "device": "auto",
               "dtype": "default"
+            }
+          },
+          {
+            "id": 484,
+            "type": "LoraLoaderModelOnly",
+            "pos": [
+              1050,
+              300
+            ],
+            "size": [
+              510,
+              110
+            ],
+            "flags": {},
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 720
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  720
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoraLoaderModelOnly"
+            },
+            "title": "Turbo (8 steps)",
+            "widgets_values": [
+              "qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors",
+              1.0
+            ],
+            "widgets_values_named": {
+              "lora_name": "qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors",
+              "strength_model": 1.0
+            }
+          },
+          {
+            "id": 485,
+            "type": "ModelAttentionBackend",
+            "pos": [
+              1050,
+              440
+            ],
+            "size": [
+              510,
+              90
+            ],
+            "flags": {},
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 721
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  721
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ModelAttentionBackend"
+            },
+            "widgets_values": [
+              "comfy kitchen attention"
+            ],
+            "widgets_values_named": {
+              "attention": "comfy kitchen attention"
+            }
+          },
+          {
+            "id": 486,
+            "type": "EasyCache",
+            "pos": [
+              1050,
+              580
+            ],
+            "size": [
+              510,
+              140
+            ],
+            "flags": {},
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 722
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  722
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EasyCache"
+            },
+            "widgets_values": [
+              0.2,
+              0.15,
+              0.95,
+              false
+            ],
+            "widgets_values_named": {
+              "reuse_threshold": 0.2,
+              "start_percent": 0.15,
+              "end_percent": 0.95,
+              "verbose": false
             }
           }
         ],
@@ -1632,14 +1767,6 @@
             "target_id": 452,
             "target_slot": 3,
             "type": "STRING"
-          },
-          {
-            "id": 700,
-            "origin_id": 480,
-            "origin_slot": 0,
-            "target_id": 458,
-            "target_slot": 0,
-            "type": "MODEL"
           },
           {
             "id": 701,
@@ -1832,6 +1959,38 @@
             "target_id": 471,
             "target_slot": 7,
             "type": "INT"
+          },
+          {
+            "id": 720,
+            "origin_id": 480,
+            "origin_slot": 0,
+            "target_id": 484,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 721,
+            "origin_id": 484,
+            "origin_slot": 0,
+            "target_id": 485,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 722,
+            "origin_id": 485,
+            "origin_slot": 0,
+            "target_id": 486,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 723,
+            "origin_id": 486,
+            "origin_slot": 0,
+            "target_id": 458,
+            "target_slot": 0,
+            "type": "MODEL"
           }
         ],
         "extra": {}
