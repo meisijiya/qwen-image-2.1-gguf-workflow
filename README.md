@@ -21,25 +21,27 @@ RTX 4060 Laptop 8 GB / 1024×1024，接默认 `euler` + `simple`：
 
 | 节点 | 作用 | 单独收益 |
 |---|---|---|
-| `LoraLoaderModelOnly` | 官方 turbo LoRA，蒸馏到 8 步 | 25→8 步：105.7s → 44.7s |
-| `ModelAttentionBackend` | comfy-kitchen INT8 注意力 | ~10% |
-| `EasyCache` | latent 变化小时复用前一步 | ~50% |
+| `LoraLoaderModelOnly` | 官方 turbo LoRA，蒸馏到 8 步 | **大头**：25→8 步，105.7s → 44.7s |
+| `EasyCache` | latent 变化小时复用前一步 | **约 50%**（步数越多省得越多） |
+| `ModelAttentionBackend` | comfy-kitchen INT8 注意力 | **约 4%**，接近噪声，锦上添花 |
 
-叠加后约 3.8×，出图对比无可见劣化。
+turbo LoRA 和 EasyCache 是两个大头，INT8 那层收益很小。叠加后约 3.8×，出图对比无可见劣化。
 
 ## 依赖
 
 **节点**：`UnetLoaderGGUF` 需要 [leejet/ComfyUI-GGUF](https://github.com/leejet/ComfyUI-GGUF)（**不要**用 city96 版，遇到 Qwen-Image 2.1 会报 `Unknown model architecture!`）。
 
-**Python 包**：INT8 注意力依赖 triton，Windows 上装社区版：
+**Python 包**：GGUF 节点自己的依赖，ComfyUI Desktop **不会**自动执行 `custom_nodes/*/requirements.txt`，装完默认是坏的（`ModuleNotFoundError: No module named 'gguf'`）：
 
 ```powershell
-& "C:\path\to\ComfyUI\.venv\Scripts\python.exe" -m pip install "triton-windows==3.8.0.post29"
+& "C:\path\to\ComfyUI\.venv\Scripts\python.exe" -m pip install "gguf>=0.13.0" sentencepiece protobuf
 ```
 
-⚠️ ComfyUI Desktop **不会**自动执行 `custom_nodes/*/requirements.txt`，GGUF 节点装完默认是坏的（`ModuleNotFoundError: No module named 'gguf'`），必须手动 pip。装完**必须重启后端**。
+装完**必须重启后端**，Desktop 不会自愈。
 
-`TorchCompileModel`（inductor）在本机仍不可用，不建议折腾。
+`ModelAttentionBackend` 的 INT8 注意力走 comfy-kitchen 的 CUDA backend，**不需要额外依赖**（日志里 `backend cuda` 自带 `int8_linear`）。
+
+`triton-windows` 只有 `TorchCompileModel`（inductor）才需要，而它在 Windows 上对本模型收益很小、稳定性也差，**建议不要启用**。
 
 ## 模型
 

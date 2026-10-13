@@ -52,11 +52,13 @@ ResolutionSelector (13) ──width/height──┐
 
 MODEL 链上串了三级加速，都在 `QwenImage21Cache (480)` 之后、`KSampler (458)` 之前：
 
-| 节点 | id | 作用 | 单独效果（25 步 / 1024²） |
+| 节点 | id | 作用 | 单独效果（1024²） |
 |---|---|---|---|
-| `LoraLoaderModelOnly` | 484 | 官方 turbo LoRA，蒸馏成 8 步 | 25→8 步：105.7s → 44.7s |
-| `ModelAttentionBackend` | 485 | 切 comfy-kitchen INT8 注意力 | ~10%（交替 A/B 测得 71.5s → 64.0s） |
-| `EasyCache` | 486 | latent 变化小时复用前一步 | ~50%（71.5s → 36.2s） |
+| `LoraLoaderModelOnly` | 484 | 官方 turbo LoRA，蒸馏成 8 步 | **大头**：25→8 步，105.7s → 44.7s |
+| `EasyCache` | 486 | latent 变化小时复用前一步 | **约 50%**（步数越多省得越多） |
+| `ModelAttentionBackend` | 485 | 切 comfy-kitchen INT8 注意力 | **约 4%**，接近噪声 |
+
+前两个是大头。485 收益很小：干净环境下 5 轮交替 A/B（16 步 + turbo + EasyCache）测得 36.5s → 35.0s。**曾有一轮测出 10%，但那轮混入了后台负载，不要引用。**
 
 **三级叠加：8 步 turbo + INT8 + EasyCache = 27.5s**，相对原始 25 步基线 105.7s 约 **3.8 倍**。
 
@@ -64,8 +66,8 @@ MODEL 链上串了三级加速，都在 `QwenImage21Cache (480)` 之后、`KSamp
 
 - **`steps` 可以往上加，8 步不是上限。** turbo LoRA 的设计值是 8，但加步数**仍有画质收益**，只是收益递减。实测（1024²，全链路）：6 步 24.1s 面部明显畸变 → 8 步 26.5s 可用 → 12 步 29.3s 干净 → 16 步 36.3s / 20 步 42.2s / 25 步 48.6s 与 12 步差距已不明显。**日常出图用 8–12；要细节上 16。**要完全回退基础模型的完整调度，Bypass 掉 484 并把 steps 提到 40–50（25 步不加速约 105s）。
 - **加步数时 EasyCache 收益会被放大**，因为跳掉的步更多：实测 25 步时 EasyCache 省约 50%，8 步时省得少（8 步全链路 26.5s 已含 EasyCache）。
-- **INT8 注意力需要 triton-windows。** 已装 `triton-windows==3.8.0.post29`。缺失时报 `Cannot find a working triton installation`，且**必须重启后端**才生效（ComfyUI Desktop 不会自愈）。本机 sm_89 有 INT8 tensor core，实测 `torch._int_mm` 比 bf16 matmul 快 3.5–4 倍。
-- **`TorchCompileModel`（inductor）在本机不可用。** 同样是 triton 报错，且 Windows 上编译 20B 模型的收益远小于前三级，不建议折腾。
+- **INT8 注意力不需要额外依赖。** 它走 comfy-kitchen 的 **cuda backend**，启动日志里 `backend cuda` 自带 `int8_linear` capability。本机 sm_89 有 INT8 tensor core，实测 `torch._int_mm` 比 bf16 matmul 快 3.5–4 倍。
+- **triton-windows 已装但默认不启用。** `comfy/quant_ops.py` 在启动时无条件执行 `ck.registry.disable("triton")`，除非显式加 `--enable-triton_backend`。所以日志里会看到 `Found comfy_kitchen backend triton: {'available': True, 'disabled': True}` —— **这是正常状态，不是故障**。triton 只被 `TorchCompileModel`（inductor）需要，而该节点在本机 Windows 上编译 20B 模型收益小且不稳，不建议加 flag 启用。
 - **`EasyCache` 参数别贪。** `reuse_threshold` 0.2 是安全值；0.35 观感仍干净；再高细节会漂。
 - **`torch.compile` 类节点一律先看日志再上机。** ComfyUI 的执行缓存会让「重复跑同一图」秒回，计时必须换 seed 交替 A/B，否则会被 0.5s 的假数据带偏。
 
